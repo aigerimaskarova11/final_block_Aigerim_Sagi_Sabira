@@ -1,57 +1,89 @@
-# Sample Hardhat 3 Beta Project (`node:test` and `viem`)
 
-This project showcases a Hardhat 3 Beta project using the native Node.js test runner (`node:test`) and the `viem` library for Ethereum interactions.
+# Decentralized Voting System
 
-To learn more about the Hardhat 3 Beta, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3 Beta](https://hardhat.org/hardhat3-beta-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+## Description
+A blockchain-based voting system deployed on Ethereum test networks.
 
-## Project Overview
+## Features
+- Create elections
+- Vote securely
+- ERC-20 participation rewards
+- MetaMask integration
 
-This example project includes:
+## Tech Stack
+- Solidity
+- Hardhat
+- JavaScript
+- MetaMask
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using [`node:test`](nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
+---
 
-## Usage
+## Prerequisites
 
-### Running Tests
+1. Node.js & npm installed: [https://nodejs.org](https://nodejs.org)
+2. MetaMask browser extension: [https://metamask.io](https://metamask.io)
+3. Hardhat installed globally (optional):
 
-To run all the tests in the project, execute the following command:
 
-```shell
-npx hardhat test
+## How to Run
+1. Clone the repository
+```bash
+git clone https://github.com/aigerimaskarova11/final_block_Aigerim_Sagi_Sabira.git
 ```
 
-You can also selectively run the Solidity or `node:test` tests:
-
-```shell
-npx hardhat test solidity
-npx hardhat test nodejs
+2. Install dependencies
+```bash
+npm install
+```
+3. Start Hardhat local blockchain
+```bash
+npx hardhat node
 ```
 
-### Make a deployment to Sepolia
+4. Deploy contracts on localhost network
 
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
-
-To run the deployment to a local chain:
-
-```shell
-npx hardhat ignition deploy ignition/modules/Counter.ts
+```bash
+npx hardhat run scripts/deploy.js --network localhost
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
+5. Copy the voting address into app.js
 
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
-
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
-
-```shell
-npx hardhat keystore set SEPOLIA_PRIVATE_KEY
+```bash
+const VOTING_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
-
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
+6. Configure Metamask
+```bash
+	1.  Open MetaMask
+	    
+	2.  Add a new network:
+	        
+	    -   RPC URL: `http://127.0.0.1:8545`
+	        
+	    -   Chain ID: `31337`
+	        
+	3.  Import one of the private keys from Hardhat accounts
+	    
+	4.  You should get 10000 ETH tokens as a result
 ```
+
+7. Start your frontend
+```bash
+npx serve frontend
+```
+
+8. 
+```bash
+	1. Connect to Metamask 
+	2. Create Election by:
+		1. Enter the title
+		2. candidates (separate by comma)
+		3. enter the duration of election
+	3.Test vote
+		1. Enter Clection ID
+		2. Enter Candidate ID
+		3. Click Cast Vote
+	4. You are going to receive VoteToken(ERC-20) for participation
+```
+
+
